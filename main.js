@@ -1,7 +1,5 @@
 /*
  * This file creates and starts the jsPsych timeline.
- * The sub parts/trials that represent the basic building blocks of the lexical
- * decision are in the file ld_trials.js.
  */
 
 let jsPsych = initJsPsych(
@@ -24,14 +22,14 @@ let maybe_preload_audio = {
     conditional_function : experimentUsesAudio
 };
 
-let instruction_screen_practice = {
+let instruction_training = {
     type: jsPsychHtmlButtonResponse,
     stimulus: function() {
-        let text = PRE_PRACTICE_INSTRUCTION;
+        let text = PRE_TRAINING_INSTRUCTION;
         return "<div class='instruction' >" +
                "<p>" + text + "</p></div>";
     },
-    choices: ["Ga verder"],
+    choices: [START_BUTTON_TEXT],
     response_ends_trial: true,
     on_finish : function(data) {
         if (typeof data.rt === "number") {
@@ -40,13 +38,13 @@ let instruction_screen_practice = {
     }
 };
 
-let pre_test_screen = {
+let instruction_test = {
     type: jsPsychHtmlButtonResponse,
     stimulus: function(){
         return "<div class='instruction' >" +
             '<p>' + PRE_TEST_INSTRUCTION + '</p></div>';
     },
-    choices: ["Ga verder"],
+    choices: [START_BUTTON_TEXT],
     response_ends_trial: true,
     data: { useful_data_flag: false },
     on_finish : function(data) {
@@ -71,6 +69,46 @@ let end_screen = {
     }
 };
 
+let training_procedure = {
+
+    timeline : [
+        {
+            type : jsPsychAudioButtonResponse,
+            stimulus : jsPsych.timelineVariable('stimulus'),
+            choices : TRAINING_CHOICES,
+            prompt : TRAINING_PROMPT,
+            trial_duration : 3000,
+            post_trial_gap : ITI_DURATION,
+            on_finish : (data) => {
+                data.id = jsPsych.timelineVariable('id');
+                data.type = jsPsych.timelineVariable('type');
+                data.phase = "training";
+            },
+        },
+    ],
+
+    timeline_variables : getTrainingItems(),
+};
+
+let test_procedure = {
+
+    timeline : [
+        {
+            type : jsPsychAudioButtonResponse,
+            stimulus : jsPsych.timelineVariable('stimulus'),
+            choices : TEST_CHOICES,
+            prompt : TEST_PROMPT,
+            post_trial_gap : ITI_DURATION,
+            on_finish : (data) => {
+                data.id = jsPsych.timelineVariable('id');
+                data.type = jsPsych.timelineVariable('type');
+                data.phase = "test";
+            },
+        },
+    ],
+
+    timeline_variables : getTestItems(),
+};
 
 function initExperiment() {
 
@@ -84,16 +122,13 @@ function initExperiment() {
     let timeline = [];
 
     // task instruction (with button)
-    timeline.push(instruction_screen_practice);
+    timeline.push(instruction_training);
     
-    // test/set audio level (sountest.js)
-    timeline.push(maybe_test_audio);
-    
-    timeline.push(practice);
+    timeline.push(training_procedure);
 
-    timeline.push(pre_test_screen);
+    timeline.push(instruction_test);
 
-    timeline.push(digit_test);
+    timeline.push(test_procedure);
 
     timeline.push(end_screen);
 

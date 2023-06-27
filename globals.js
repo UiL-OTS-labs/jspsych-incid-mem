@@ -23,6 +23,17 @@ const DEBRIEF_MESSAGE_DURATION = 30000;
 
 const DEFAULT_ITI = 1000;
 
-const ISI = 200;
+const ITI_DURATION = 750;
 
 const MAX_NUM_ERRORS = 2; // Consecutive errors.
+
+const START_BUTTON_TEXT = "START";
+
+const TRAINING_PROMPT =
+        "Dit woord klinkt als een woord dat behoort tot de categorie …";
+
+const TEST_PROMPT = "Is dit woord correct in de taal die je "  +
+                    "zojuist hebt geleerd?";
+
+const TRAINING_CHOICES = ["Bloemen", "Dieren", "Gereedschap"];
+const TEST_CHOICES = ["Ja", "Nee"];
