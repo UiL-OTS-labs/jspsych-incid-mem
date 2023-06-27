@@ -35,5 +35,11 @@ const TRAINING_PROMPT =
 const TEST_PROMPT = "Is dit woord correct in de taal die je "  +
                     "zojuist hebt geleerd?";
 
+const MEM1 = "MEM1";
+const MEM2 = "MEM2";
+
+const YES_RESPONSE = "Ja";
+const NO_RESPONSE = "Nee";
+
 const TRAINING_CHOICES = ["Bloemen", "Dieren", "Gereedschap"];
-const TEST_CHOICES = ["Ja", "Nee"];
+const TEST_CHOICES = [YES_RESPONSE, NO_RESPONSE];

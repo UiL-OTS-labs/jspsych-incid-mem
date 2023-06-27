@@ -83,11 +83,13 @@ let training_procedure = {
                 data.id = jsPsych.timelineVariable('id');
                 data.type = jsPsych.timelineVariable('type');
                 data.phase = "training";
+                data.chosen = TRAINING_CHOICES[data.response];
             },
         },
     ],
 
     timeline_variables : getTrainingItems(),
+    randomize_order : true,
 };
 
 let test_procedure = {
@@ -103,11 +105,18 @@ let test_procedure = {
                 data.id = jsPsych.timelineVariable('id');
                 data.type = jsPsych.timelineVariable('type');
                 data.phase = "test";
+                data.chosen = TEST_CHOICES[data.response];
+                if (data.chosen === YES_RESPONSE && data.type === MEM1 ||
+                    data.chosen === NO_RESPONSE && data.type === MEM2)
+                    data.correct = true;
+                else 
+                    data.correct = false;
             },
         },
     ],
 
     timeline_variables : getTestItems(),
+    randomize_order : true
 };
 
 function initExperiment() {
