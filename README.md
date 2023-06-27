@@ -12,6 +12,13 @@ training task the participant has to categorize the (non-) words in three
 categories. In the latter part, the participant has to indicate whether or
 not the word was presented in the first part or not.
 
+## Stimuli
+
+The stimuli are words that are presented as .wav file. The repository doesn't
+contain the stimuli as they are considered to be private property. Hence,
+you should obtain the stimuli in order to get started or put in your own
+stimuli. The stimuli are specified in the stimuli.js file.
+
 ## Getting started
 
 People _affiliated with ILS labs_ can use the information
