@@ -4,10 +4,6 @@
 
 let jsPsych = initJsPsych(
     {
-        exclusions: {
-            min_width: MIN_WIDTH,
-            min_height: MIN_HEIGHT
-        }
     }
 );
 
@@ -71,20 +67,28 @@ let end_screen = {
 
 let training_procedure = {
 
+    n : 1,
+
     timeline : [
         {
             type : jsPsychIlsAudioButtonResponse,
             stimulus : jsPsych.timelineVariable('stimulus'),
             choices : TRAINING_CHOICES,
-            prompt : TRAINING_PROMPT,
+            prompt : function () {
+                return TRAINING_PROMPT + "<h2>" + training_procedure.n
+                    + "/" + getTrainingItems().length + "</h2><br>";
+            },
+            button_html : '<button class="jspsych-btn minbutton">%choice%</button>',
             trial_duration : 3000,
             post_trial_gap : ITI_DURATION,
             clear_html_on_exit:false,
+            response_allowed_while_playing : false,
             on_finish : (data) => {
                 data.id = jsPsych.timelineVariable('id');
                 data.type = jsPsych.timelineVariable('type');
                 data.phase = "training";
                 data.chosen = TRAINING_CHOICES[data.response];
+                training_procedure.n += 1;
             },
         },
     ],
@@ -95,14 +99,22 @@ let training_procedure = {
 
 let test_procedure = {
 
+    n : 1,
+
     timeline : [
         {
-            type : jsPsychAudioButtonResponse,
+            type : jsPsychIlsAudioButtonResponse,
             stimulus : jsPsych.timelineVariable('stimulus'),
             choices : TEST_CHOICES,
-            prompt : TEST_PROMPT,
+            prompt : function () {
+                return TEST_PROMPT + "<h2>" + test_procedure.n
+                    + "/" + getTestItems().length + "</h2><br>";
+            },
+            button_html : '<button class="jspsych-btn minbutton">%choice%</button>',
+            trial_duration : 3000,
             post_trial_gap : ITI_DURATION,
             clear_html_on_exit:false,
+            response_allowed_while_playing : false,
             on_finish : (data) => {
                 data.id = jsPsych.timelineVariable('id');
                 data.type = jsPsych.timelineVariable('type');
@@ -113,6 +125,7 @@ let test_procedure = {
                     data.correct = true;
                 else 
                     data.correct = false;
+                test_procedure.n += 1;
             },
         },
     ],
