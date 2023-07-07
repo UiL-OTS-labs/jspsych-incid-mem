@@ -16,8 +16,7 @@ const PRE_TRAINING_INSTRUCTION =
     "GEREEDSCHAP knop op het scherm te klikken.<br>"                          +
     "Zorg ervoor dat je altijd binnen de tijd een categorie gekozen hebt.<br>"+
     "<br>"                                                                    +
-    "<i>Druk op START zodra je klaar bent om te beginnen.</i>"
-    ;
+    "<i>Druk op START zodra je klaar bent om te beginnen.</i>"                ;
 
 const PRE_TEST_INSTRUCTION =
     "In de vorige fase heb je geluisterd naar woorden uit een vergeten "      +
@@ -31,13 +30,17 @@ const PRE_TEST_INSTRUCTION =
     "het eerst hoort, dan klik je NEE.<cr>"                                   +
     "Maak een beslissing zodra je het antwoord weet.<br>"                     +
     "<br>"                                                                    +
-    "<i>Druk op START zodra je klaar bent om te beginnen.</i>"
-    ;
+    "<i>Druk op START zodra je klaar bent om te beginnen.</i>"                ;
 
 const DEBRIEF_MESSAGE = `
-    <h1>Einde van het experiment</h1>
+    <h1>Dit is het einde van het derde deel van het experiment!</h1>
     <br>
     <br>
-    <h2>Dank je wel!</h2>
+    <h2>Dank je wel voor jouw deelname!</h2>
     `;
+
+const TRAINING_PROMPT =
+      "<h2>Dit woord klinkt als een woord dat behoort tot de categorie …</h2>";
+
+const TEST_PROMPT = "<h2>Heb je dit woord in de vorige fase gehoord?</h2>";
 

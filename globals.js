@@ -29,12 +29,6 @@ const MAX_NUM_ERRORS = 2; // Consecutive errors.
 
 const START_BUTTON_TEXT = "START";
 
-const TRAINING_PROMPT =
-        "Dit woord klinkt als een woord dat behoort tot de categorie …";
-
-const TEST_PROMPT = "Is dit woord correct in de taal die je "  +
-                    "zojuist hebt geleerd?";
-
 const MEM1 = "MEM1";
 const MEM2 = "MEM2";
 
