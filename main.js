@@ -73,12 +73,13 @@ let training_procedure = {
 
     timeline : [
         {
-            type : jsPsychAudioButtonResponse,
+            type : jsPsychIlsAudioButtonResponse,
             stimulus : jsPsych.timelineVariable('stimulus'),
             choices : TRAINING_CHOICES,
             prompt : TRAINING_PROMPT,
             trial_duration : 3000,
             post_trial_gap : ITI_DURATION,
+            clear_html_on_exit:false,
             on_finish : (data) => {
                 data.id = jsPsych.timelineVariable('id');
                 data.type = jsPsych.timelineVariable('type');
@@ -101,6 +102,7 @@ let test_procedure = {
             choices : TEST_CHOICES,
             prompt : TEST_PROMPT,
             post_trial_gap : ITI_DURATION,
+            clear_html_on_exit:false,
             on_finish : (data) => {
                 data.id = jsPsych.timelineVariable('id');
                 data.type = jsPsych.timelineVariable('type');

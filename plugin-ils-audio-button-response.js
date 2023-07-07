@@ -138,6 +138,7 @@ var jsPsychIlsAudioButtonResponse = (function (jspsych) {
               }
 
               //show prompt if there is one
+              let html = "";
               if (trial.prompt !== null) {
                   html += trial.prompt;
               }
@@ -157,7 +158,7 @@ var jsPsychIlsAudioButtonResponse = (function (jspsych) {
                       buttons.push(trial.button_html);
                   }
               }
-              var html = '<div id="jspsych-audio-button-response-btngroup">';
+              html += '<div id="jspsych-audio-button-response-btngroup">';
               for (var i = 0; i < trial.choices.length; i++) {
                   var str = buttons[i].replace(/%choice%/g, trial.choices[i]);
                   html +=
@@ -237,8 +238,9 @@ var jsPsychIlsAudioButtonResponse = (function (jspsych) {
                   response: response.button,
               };
               // clear the display
-              
-              display_element.innerHTML = "";
+              if (trial.clear_html_on_exit) {
+                display_element.innerHTML = "";
+              }
               // move on to the next trial
               this.jsPsych.finishTrial(trial_data);
               trial_complete();
