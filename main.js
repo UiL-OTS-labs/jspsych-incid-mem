@@ -62,7 +62,7 @@ let instruction_test = {
 let end_screen = {
     type: jsPsychHtmlButtonResponse,
     stimulus: DEBRIEF_MESSAGE,
-    choices: [],
+    choices: ["Ga naar taak 4"],
     trial_duration: DEBRIEF_MESSAGE_DURATION,
     on_finish : function(data) {
         if (typeof data.rt === "number") {
