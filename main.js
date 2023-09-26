@@ -153,6 +153,7 @@ function initExperiment() {
         SESSION_ID : jsPsych.data.getURLVariable('SESSION_ID'),  
     };
     jsPsych.data.addProperties(g_prolific_vars);
+    jsPsych.data.addProperties({task_name : "incid_mem"});
 
 
     let timeline = [];
