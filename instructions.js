@@ -5,6 +5,12 @@
  * utf8 text encoding.
  */
 
+const FULLSCREEN_PROMPT =
+    "<p>Druk op de knop hieronder om naar een volledig scherm te gaan.</p>";
+
+const FULLSCREEN_BUTTON_LABEL = 
+    "Ga naar een volledig scherm.";
+
 const PRE_TRAINING_INSTRUCTION =
     "Je gaat zo luisteren naar woorden uit een buitenaardse taal. Elk woord " +
     "behoort tot één van de volgende categorieën: bloemen, dieren, of "       +

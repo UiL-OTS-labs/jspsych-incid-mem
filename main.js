@@ -22,7 +22,9 @@ let maybe_preload_audio = {
 
 let request_fullscreen = {
     type : jsPsychFullscreen,
-    fullscreen_mode : true
+    fullscreen_mode : true,
+    message : FULLSCREEN_PROMPT,
+    button_label : FULLSCREEN_BUTTON_LABEL,
 };
 
 let instruction_training = {
