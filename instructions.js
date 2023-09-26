@@ -39,8 +39,7 @@ const PRE_TEST_INSTRUCTION =
     "<i>Druk op START zodra je klaar bent om te beginnen.</i>"                ;
 
 const DEBRIEF_MESSAGE = `
-    <h1>Dit is het einde van het derde deel van het experiment!</h1>
-    <br>
+    <h1>Dit is het einde van de derde taak!</h1>
     <br>
     <h2>Dank je wel voor jouw deelname!</h2>
     `;
