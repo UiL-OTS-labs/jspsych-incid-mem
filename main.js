@@ -121,7 +121,6 @@ let test_procedure = {
                     + "/" + getTestItems().length + "</h2><br>";
             },
             button_html : '<button class="jspsych-btn minbutton">%choice%</button>',
-            trial_duration : 3000,
             post_trial_gap : ITI_DURATION,
             clear_html_on_exit:false,
             response_allowed_while_playing : false,
