@@ -59,6 +59,16 @@ let instruction_test = {
     }
 };
 
+let fetch_browser_interaction = {
+    type : jsPsychHtmlButtonResponse,
+    trial_duration : 0,
+    choices : [],
+    on_finish : function (data) {
+        Object.keys(data).forEach(key => delete data[key]);
+        data.browser_interactions = jsPsych.data.getInteractionData();
+    }
+}
+
 let end_screen = {
     type: jsPsychHtmlButtonResponse,
     stimulus: DEBRIEF_MESSAGE,
@@ -177,6 +187,8 @@ function initExperiment() {
     timeline.push({
         type : IlsFocusPlugin
     });
+
+    timeline.push(fetch_browser_interaction);
 
     timeline.push(end_screen);
 
